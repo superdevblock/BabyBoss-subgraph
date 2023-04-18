@@ -1,0 +1,59 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Babyboss
+    network: goerli
+    source:
+      address: "0x90cc37660920f0a49c0409a5bbc5133d74948213"
+      abi: Babyboss
+      startBlock: 8779722
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: Babyboss
+          file: ./abis/Babyboss.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/Babyboss.ts
+  - kind: ethereum
+    name: StakingContract
+    network: goerli
+    source:
+      address: "0x6d0d12de23ceb005db63e10b1ce4cc1aafa2104a"
+      abi: StakingContract
+      startBlock: 8779722
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Stake
+        - UnStake
+        - ClaimRewards
+      abis:
+        - name: StakingContract
+          file: ./abis/StakingContract.json
+      eventHandlers:
+        - event: Stake(indexed address,address,uint256)
+          handler: handleStake
+        - event: UnStake(indexed address,address,uint256)
+          handler: handleUnStake
+        - event: ClaimRewards(indexed address,uint256)
+          handler: handleClaimRewards
+      file: ./src/StakingContract.ts

@@ -1,0 +1,22 @@
+{
+  "name": "BabyBoss",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "auth": "graph auth --studio 91cea7d866cd975a8113118eda9f7f80",
+    "deploy": "graph deploy --studio babyboss",
+    "create-local": "graph create --node http://localhost:8020/ babyBoss",
+    "remove-local": "graph remove --node http://localhost:8020/ babyBoss",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 babyBoss",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.33.1",
+    "@graphprotocol/graph-ts": "0.27.0",
+    "ethers": "^6.2.2"
+  },
+  "devDependencies": {
+    "matchstick-as": "0.5.0"
+  }
+}

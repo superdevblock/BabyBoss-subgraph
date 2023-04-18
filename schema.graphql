@@ -1,0 +1,15 @@
+type NFT @entity {
+  id: ID!
+  tokenId: BigInt!
+  owner: Bytes!
+  approved: Bytes!
+  stake: Boolean!
+  startTime: BigInt!
+}
+
+type Claim @entity {
+  id: ID!
+  address: Bytes!
+  amount: BigInt!
+  createdAt: BigInt!
+}
